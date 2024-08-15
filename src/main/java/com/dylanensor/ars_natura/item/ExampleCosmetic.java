@@ -1,4 +1,4 @@
-package com.example.an_addon.item;
+package com.dylanensor.ars_natura.item;
 
 import com.hollingsworth.arsnouveau.api.entity.IDecoratable;
 import com.hollingsworth.arsnouveau.api.item.ICosmeticItem;

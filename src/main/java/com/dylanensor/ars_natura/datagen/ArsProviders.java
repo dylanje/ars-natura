@@ -1,8 +1,8 @@
-package com.example.an_addon.datagen;
+package com.dylanensor.ars_natura.datagen;
 
-import com.example.an_addon.ArsNouveauRegistry;
-import com.example.an_addon.ExampleANAddon;
-import com.example.an_addon.glyphs.TestEffect;
+import com.dylanensor.ars_natura.ArsNatura;
+import com.dylanensor.ars_natura.ArsNouveauRegistry;
+import com.dylanensor.ars_natura.glyphs.TestEffect;
 import com.hollingsworth.arsnouveau.api.enchanting_apparatus.EnchantingApparatusRecipe;
 import com.hollingsworth.arsnouveau.api.familiar.AbstractFamiliarHolder;
 import com.hollingsworth.arsnouveau.api.ritual.AbstractRitual;
@@ -30,7 +30,7 @@ import static com.hollingsworth.arsnouveau.setup.registry.RegistryHelper.getRegi
 
 public class ArsProviders {
 
-    static String root = ExampleANAddon.MODID;
+    static String root = ArsNatura.MODID;
 
     public static class GlyphProvider extends GlyphRecipeProvider {
 

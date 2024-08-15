@@ -1,7 +1,7 @@
-package com.example.an_addon;
+package com.dylanensor.ars_natura;
 
-import com.example.an_addon.glyphs.TestEffect;
-import com.example.an_addon.registry.ModRegistry;
+import com.dylanensor.ars_natura.glyphs.TestEffect;
+import com.dylanensor.ars_natura.registry.ModRegistry;
 import com.hollingsworth.arsnouveau.api.registry.GlyphRegistry;
 import com.hollingsworth.arsnouveau.api.registry.SpellSoundRegistry;
 import com.hollingsworth.arsnouveau.api.sound.SpellSound;

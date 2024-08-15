@@ -1,11 +1,6 @@
-# Ars-Nouveau-Example-Addon
+# Ars Natura - an Ars Nouveau addon
 
-An example repository for making an addon for Ars Nouveau! See the wiki for more info.
-
-**Getting Started**
-
-* Fork this repo for a ready to build work space.
-* Join the Ars Nouveau discord to ask questions, get help, or get ideas.
+The goal of Ars Natura is to provide better biome control for skyblock modpacks.
 
 Some useful links for beginners:
 * https://mcforge.readthedocs.io/en/latest/

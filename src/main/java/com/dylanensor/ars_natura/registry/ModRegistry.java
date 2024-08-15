@@ -1,6 +1,6 @@
-package com.example.an_addon.registry;
+package com.dylanensor.ars_natura.registry;
 
-import com.example.an_addon.item.ExampleCosmetic;
+import com.dylanensor.ars_natura.item.ExampleCosmetic;
 import com.hollingsworth.arsnouveau.api.sound.SpellSound;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -11,7 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import static com.example.an_addon.ExampleANAddon.MODID;
+import static com.dylanensor.ars_natura.ArsNatura.MODID;
 
 public class ModRegistry {
 

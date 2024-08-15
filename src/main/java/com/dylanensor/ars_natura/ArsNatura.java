@@ -1,6 +1,6 @@
-package com.example.an_addon;
+package com.dylanensor.ars_natura;
 
-import com.example.an_addon.registry.ModRegistry;
+import com.dylanensor.ars_natura.registry.ModRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -14,14 +14,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(ExampleANAddon.MODID)
-public class ExampleANAddon
+@Mod(ArsNatura.MODID)
+public class ArsNatura
 {
-    public static final String MODID = "an_addon";
+    public static final String MODID = "ars_natura";
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public ExampleANAddon() {
+    public ArsNatura() {
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
         ModRegistry.registerRegistries(modbus);
         ArsNouveauRegistry.registerGlyphs();
