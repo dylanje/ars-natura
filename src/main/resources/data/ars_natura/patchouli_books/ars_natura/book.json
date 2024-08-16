@@ -1,7 +1,7 @@
 
 {
-  "name": "Example Notes",
-  "landing_text": "Lost notes from the worn notebook",
+  "name": "Ars Natura",
+  "landing_text": "biomes for all",
   "version": 1,
   "extend": "ars_nouveau:worn_notebook"
 }

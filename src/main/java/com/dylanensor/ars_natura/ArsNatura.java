@@ -1,5 +1,6 @@
 package com.dylanensor.ars_natura;
 
+import com.dylanensor.ars_natura.network.ANNetwork;
 import com.dylanensor.ars_natura.registry.ModRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -36,7 +37,7 @@ public class ArsNatura
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        ArsNouveauRegistry.registerSounds();
+        ANNetwork.registerMessages();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -47,7 +48,7 @@ public class ArsNatura
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("HELLO from Ars Natura");
     }
 
 }

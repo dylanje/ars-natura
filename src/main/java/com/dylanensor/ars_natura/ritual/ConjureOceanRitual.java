@@ -3,38 +3,21 @@ package com.dylanensor.ars_natura.ritual;
 import com.dylanensor.ars_natura.ArsNatura;
 import com.dylanensor.ars_natura.lib.RitualLib;
 import com.hollingsworth.arsnouveau.api.ritual.ConjureBiomeRitual;
-import com.hollingsworth.arsnouveau.common.block.ArchwoodChest;
+import com.hollingsworth.arsnouveau.api.ritual.ManhattenTracker;
 import com.hollingsworth.arsnouveau.common.datagen.ItemTagProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CoralBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import software.bernie.example.registry.ItemRegistry;
 
-import javax.annotation.Nullable;
-/*
-    OCEAN
-    WARM_OCEAN
-    LUKEWARM_OCEAN
-    DEEP_LUKEWARM_OCEAN
-    DEEP_OCEAN
-    COLD_OCEAN
-    DEEP_COLD_OCEAN
-    FROZEN_OCEAN
-    DEEP_FROZEN_OCEAN
- */
 public class ConjureOceanRitual extends ConjureBiomeRitual {
+    public int radius = 9;
+    public ManhattenTracker tracker;
+
     boolean isWarm,
             isLukewarm,
             isDeepLukewarm,
@@ -53,13 +36,33 @@ public class ConjureOceanRitual extends ConjureBiomeRitual {
         super.onStart();
         checkForBiomeModifier();
         setBiome();
+
+        if(getWorld().isClientSide){
+            return;
+        }
+        for(ItemStack i : getConsumedItems()){
+            if(i.is(ItemTagProvider.SOURCE_GEM_TAG)) {
+                radius += i.getCount();
+            }
+        }
+        tracker = new ManhattenTracker(getPos().below(7), radius, 2, radius);
     }
 
     @Override
-    public BlockState stateForPos(BlockPos nextPos) {
+    public BlockState stateForPos(BlockPos placePos) {
         checkForBiomeModifier();
-
-        return nextPos.getY() == getPos().getY() - 1 ? Blocks.GRAVEL.defaultBlockState() : Blocks.DIRT.defaultBlockState();
+        if (isWarm) {
+            int depth = getPos().getY() - placePos.getY();
+            if (depth == 1) {
+                return Blocks.WATER.defaultBlockState();
+            } else if (depth == 2) {
+                return Blocks.WATER.defaultBlockState();
+            } else if (depth == 3) {
+                return Blocks.SAND.defaultBlockState();
+            }
+            return Blocks.SANDSTONE.defaultBlockState();
+        }
+        return placePos.getY() == getPos().getY() - 1 ? Blocks.SAND.defaultBlockState() : Blocks.SANDSTONE.defaultBlockState();
     }
 
     @Override
