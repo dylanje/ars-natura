@@ -14,10 +14,10 @@ public class Setup {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
 
-        gen.addProvider(event.includeServer(), new ArsProviders.PatchouliProvider(gen));
         gen.addProvider(event.includeClient(), new LangGen(gen.getPackOutput(), ArsNatura.MODID, "en_us"));
         gen.addProvider(event.includeServer(), new RecipeData(gen.getPackOutput()));
         gen.addProvider(event.includeClient(), new ItemModelGen(gen.getPackOutput(), ArsNatura.MODID, event.getExistingFileHelper()));
+        gen.addProvider(event.includeServer(), new ArsProviders.PatchouliProvider(gen));
     }
 
 }

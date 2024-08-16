@@ -32,6 +32,7 @@ public class ArsNatura
     }
 
     public static ResourceLocation prefix(String path){
+
         return new ResourceLocation(MODID, path);
     }
 
