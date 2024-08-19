@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:nether_stars"
+    },
+    {
+      "item": "minecraft:stone_bricks"
+    },
+    {
+      "tag": "forge:storage_blocks/source"
+    }
+  ],
+  "result": {
+    "item": "ars_natura:ritual_conjure_biome_mountain"
+  }
+}
