@@ -81,6 +81,13 @@ public class ConjureBiomeOceanRitual extends ConjureBiomeRitual {
     public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.OCEAN); }
 
     @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isDeep", isDeep);
+        tag.putBoolean("isMushroom", isMushroom);
+    }
+
+    @Override
     public void read(CompoundTag tag) {
         super.read(tag);
         checkForBiomeModifier();
@@ -93,12 +100,11 @@ public class ConjureBiomeOceanRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.OCEAN;
         if (isDeep) {
             this.biome = Biomes.DEEP_OCEAN;
         } else if (isMushroom) {
             this.biome = Biomes.MUSHROOM_FIELDS;
-        } else {
-            this.biome = Biomes.OCEAN;
         }
         return this.biome;
     }

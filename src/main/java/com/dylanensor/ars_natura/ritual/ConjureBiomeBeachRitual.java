@@ -81,6 +81,13 @@ public class ConjureBiomeBeachRitual extends ConjureBiomeRitual {
     public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.BEACH); }
 
     @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isSnowy", isSnowy);
+        tag.putBoolean("isStony", isStony);
+    }
+
+    @Override
     public void read(CompoundTag tag) {
         super.read(tag);
         checkForBiomeModifier();
@@ -93,14 +100,12 @@ public class ConjureBiomeBeachRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.BEACH;
         if (isSnowy) {
             this.biome = Biomes.SNOWY_BEACH;
         } else if (isStony) {
             this.biome = Biomes.STONY_SHORE;
-        } else {
-            this.biome = Biomes.BEACH;
         }
-
         return this.biome;
     }
 }

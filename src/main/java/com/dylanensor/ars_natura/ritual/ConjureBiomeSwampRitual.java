@@ -79,6 +79,12 @@ public class ConjureBiomeSwampRitual extends ConjureBiomeRitual {
     public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.SWAMP); }
 
     @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isMangrove", isMangrove);
+    }
+
+    @Override
     public void read(CompoundTag tag) {
         super.read(tag);
         checkForBiomeModifier();
@@ -90,10 +96,9 @@ public class ConjureBiomeSwampRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.SWAMP;
         if (isMangrove) {
             this.biome = Biomes.MANGROVE_SWAMP;
-        } else {
-            this.biome = Biomes.SWAMP;
         }
         return this.biome;
     }

@@ -7,9 +7,11 @@ import com.hollingsworth.arsnouveau.api.ritual.ManhattenTracker;
 import com.hollingsworth.arsnouveau.common.datagen.ItemTagProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -83,6 +85,15 @@ public class ConjureBiomeForestRitual extends ConjureBiomeRitual {
     public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.FOREST); }
 
     @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isFlower", isFlower);
+        tag.putBoolean("isDark", isDark);
+        tag.putBoolean("isBirch", isBirch);
+        tag.putBoolean("isOldBirch", isOldBirch);
+    }
+
+    @Override
     public void read(CompoundTag tag) {
         super.read(tag);
         checkForBiomeModifier();
@@ -97,6 +108,7 @@ public class ConjureBiomeForestRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.FOREST;
         if (isFlower) {
             this.biome = Biomes.FLOWER_FOREST;
         } else if (isDark) {
@@ -105,8 +117,7 @@ public class ConjureBiomeForestRitual extends ConjureBiomeRitual {
             this.biome = Biomes.BIRCH_FOREST;
         } else if (isOldBirch) {
             this.biome = Biomes.OLD_GROWTH_BIRCH_FOREST;
-        } else {
-            this.biome = Biomes.FOREST;
         }
+        return this.biome;
     }
 }

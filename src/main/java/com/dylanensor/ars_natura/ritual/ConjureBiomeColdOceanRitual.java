@@ -83,6 +83,14 @@ public class ConjureBiomeColdOceanRitual extends ConjureBiomeRitual {
     public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.COLD_OCEAN); }
 
     @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isDeepCold", isDeepCold);
+        tag.putBoolean("isFrozen", isFrozen);
+        tag.putBoolean("isDeepFrozen", isDeepFrozen);
+    }
+
+    @Override
     public void read(CompoundTag tag) {
         super.read(tag);
         checkForBiomeModifier();
@@ -96,14 +104,13 @@ public class ConjureBiomeColdOceanRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.COLD_OCEAN;
         if (isDeepCold) {
             this.biome = Biomes.DEEP_COLD_OCEAN;
         } else if (isFrozen) {
             this.biome = Biomes.FROZEN_OCEAN;
         } else if (isDeepFrozen) {
             this.biome = Biomes.DEEP_FROZEN_OCEAN;
-        } else {
-            this.biome = Biomes.COLD_OCEAN;
         }
         return this.biome;
     }

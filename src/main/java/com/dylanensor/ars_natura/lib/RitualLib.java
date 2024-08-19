@@ -6,8 +6,8 @@ public class RitualLib {
     public static final String FOREST = prependRitual("conjure_biome_forest");
     public static final String JUNGLE = prependRitual("conjure_biome_jungle");
     public static final String MOUNTAIN = prependRitual("conjure_biome_mountain");
-    public static final String NEW_DESERT = prependRitual("conjure_biome_new_desert");
-    public static final String NEW_PLAINS = prependRitual("conjure_biome_new_plains");
+    public static final String DESERT = prependRitual("conjure_biome_desert");
+    public static final String PLAINS = prependRitual("conjure_biome_plains");
     public static final String OCEAN = prependRitual("conjure_biome_ocean");
     public static final String RIVER = prependRitual("conjure_biome_river");
     public static final String SAVANNA = prependRitual("conjure_biome_savanna");

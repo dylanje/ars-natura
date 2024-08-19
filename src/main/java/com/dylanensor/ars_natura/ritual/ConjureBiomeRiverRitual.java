@@ -79,6 +79,12 @@ public class ConjureBiomeRiverRitual extends ConjureBiomeRitual {
     public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.RIVER); }
 
     @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isFrozen", isFrozen);
+    }
+
+    @Override
     public void read(CompoundTag tag) {
         super.read(tag);
         checkForBiomeModifier();
@@ -90,10 +96,9 @@ public class ConjureBiomeRiverRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.RIVER;
         if (isFrozen) {
             this.biome = Biomes.FROZEN_RIVER;
-        } else {
-            this.biome = Biomes.RIVER;
         }
         return this.biome;
     }

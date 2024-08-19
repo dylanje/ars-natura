@@ -89,6 +89,17 @@ public class ConjureBiomeMountainRitual extends ConjureBiomeRitual {
     public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.MOUNTAIN); }
 
     @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isGrove", isGrove);
+        tag.putBoolean("isCherry", isCherry);
+        tag.putBoolean("isSnowy", isSnowy);
+        tag.putBoolean("isFrozen", isFrozen);
+        tag.putBoolean("isStony", isStony);
+        tag.putBoolean("isJagged", isJagged);
+    }
+
+    @Override
     public void read(CompoundTag tag) {
         super.read(tag);
         checkForBiomeModifier();
@@ -105,6 +116,7 @@ public class ConjureBiomeMountainRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.MEADOW;
         if (isGrove) {
             this.biome = Biomes.GROVE;
         } else if (isCherry) {
@@ -117,8 +129,6 @@ public class ConjureBiomeMountainRitual extends ConjureBiomeRitual {
             this.biome = Biomes.STONY_PEAKS;
         } else if (isJagged) {
             this.biome = Biomes.JAGGED_PEAKS;
-        } else {
-            this.biome = Biomes.MEADOW;
         }
         return this.biome;
     }

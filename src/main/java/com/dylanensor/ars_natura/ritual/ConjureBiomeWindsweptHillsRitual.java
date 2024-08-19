@@ -81,6 +81,13 @@ public class ConjureBiomeWindsweptHillsRitual extends ConjureBiomeRitual {
     public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.WINDSWEPT_HILLS); }
 
     @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isForest", isForest);
+        tag.putBoolean("isGravel", isGravel);
+    }
+
+    @Override
     public void read(CompoundTag tag) {
         super.read(tag);
         checkForBiomeModifier();
@@ -93,12 +100,11 @@ public class ConjureBiomeWindsweptHillsRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.WINDSWEPT_HILLS;
         if (isForest) {
             this.biome = Biomes.WINDSWEPT_FOREST;
         } else if (isGravel) {
             this.biome = Biomes.WINDSWEPT_GRAVELLY_HILLS;
-        } else {
-            this.biome = Biomes.WINDSWEPT_HILLS;
         }
         return this.biome;
     }

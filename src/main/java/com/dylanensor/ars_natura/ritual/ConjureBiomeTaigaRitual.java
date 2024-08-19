@@ -83,6 +83,14 @@ public class ConjureBiomeTaigaRitual extends ConjureBiomeRitual {
     public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.TAIGA); }
 
     @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isSnowy", isSnowy);
+        tag.putBoolean("isSpruce", isSpruce);
+        tag.putBoolean("isPine", isPine);
+    }
+
+    @Override
     public void read(CompoundTag tag) {
         super.read(tag);
         checkForBiomeModifier();
@@ -96,14 +104,13 @@ public class ConjureBiomeTaigaRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.TAIGA;
         if (isSnowy) {
             this.biome = Biomes.SNOWY_TAIGA;
         } else if (isSpruce) {
             this.biome = Biomes.OLD_GROWTH_SPRUCE_TAIGA;
         } else if (isPine) {
             this.biome = Biomes.OLD_GROWTH_PINE_TAIGA;
-        } else {
-            this.biome = Biomes.TAIGA;
         }
         return this.biome;
     }

@@ -7,9 +7,11 @@ import com.hollingsworth.arsnouveau.api.ritual.ManhattenTracker;
 import com.hollingsworth.arsnouveau.common.datagen.ItemTagProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -78,7 +80,15 @@ public class ConjureBiomeDesertRitual extends ConjureBiomeRitual {
     }
 
     @Override
-    public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.NEW_DESERT); }
+    public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.DESERT); }
+
+    @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isBadlands", isBadlands);
+        tag.putBoolean("isWooded", isWooded);
+        tag.putBoolean("isEroded", isEroded);
+    }
 
     @Override
     public void read(CompoundTag tag) {
@@ -94,15 +104,15 @@ public class ConjureBiomeDesertRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.DESERT;
         if (isBadlands) {
             this.biome = Biomes.BADLANDS;
         } else if (isWooded) {
             this.biome = Biomes.WOODED_BADLANDS;
         } else if (isEroded) {
             this.biome = Biomes.ERODED_BADLANDS;
-        } else {
-            this.biome = Biomes.DESERT;
         }
+        return this.biome;
     }
 }
 

@@ -81,6 +81,13 @@ public class ConjureBiomeJungleRitual extends ConjureBiomeRitual {
     public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.JUNGLE); }
 
     @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isBamboo", isBamboo);
+        tag.putBoolean("isSparse", isSparse);
+    }
+
+    @Override
     public void read(CompoundTag tag) {
         super.read(tag);
         checkForBiomeModifier();
@@ -93,12 +100,11 @@ public class ConjureBiomeJungleRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.JUNGLE;
         if (isBamboo) {
             this.biome = Biomes.BAMBOO_JUNGLE;
         } else if (isSparse) {
             this.biome = Biomes.SPARSE_JUNGLE;
-        } else {
-            this.biome = Biomes.JUNGLE;
         }
         return this.biome;
     }

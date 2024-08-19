@@ -25,8 +25,8 @@ public class RecipeData extends RecipeDatagen {
         shapelessBuilder(getAddonRitual(RitualLib.FOREST)).requires(Tags.Items.NETHER_STARS).requires(Items.OAK_LEAVES).requires(SOURCE_GEM_BLOCK).save(consumer);
         shapelessBuilder(getAddonRitual(RitualLib.JUNGLE)).requires(Tags.Items.NETHER_STARS).requires(Items.COCOA_BEANS).requires(SOURCE_GEM_BLOCK).save(consumer);
         shapelessBuilder(getAddonRitual(RitualLib.MOUNTAIN)).requires(Tags.Items.NETHER_STARS).requires(Items.STONE_BRICKS).requires(SOURCE_GEM_BLOCK).save(consumer);
-        shapelessBuilder(getAddonRitual(RitualLib.NEW_DESERT)).requires(Tags.Items.NETHER_STARS).requires(Items.SANDSTONE).requires(SOURCE_GEM_BLOCK).save(consumer);
-        shapelessBuilder(getAddonRitual(RitualLib.NEW_PLAINS)).requires(Tags.Items.NETHER_STARS).requires(Items.GRASS_BLOCK).requires(SOURCE_GEM_BLOCK).save(consumer);
+        shapelessBuilder(getAddonRitual(RitualLib.DESERT)).requires(Tags.Items.NETHER_STARS).requires(Items.SANDSTONE).requires(SOURCE_GEM_BLOCK).save(consumer);
+        shapelessBuilder(getAddonRitual(RitualLib.PLAINS)).requires(Tags.Items.NETHER_STARS).requires(Items.GRASS_BLOCK).requires(SOURCE_GEM_BLOCK).save(consumer);
         shapelessBuilder(getAddonRitual(RitualLib.OCEAN)).requires(Tags.Items.NETHER_STARS).requires(Items.WATER_BUCKET).requires(SOURCE_GEM_BLOCK).save(consumer);
         shapelessBuilder(getAddonRitual(RitualLib.RIVER)).requires(Tags.Items.NETHER_STARS).requires(Items.INK_SAC).requires(SOURCE_GEM_BLOCK).save(consumer);
         shapelessBuilder(getAddonRitual(RitualLib.SAVANNA)).requires(Tags.Items.NETHER_STARS).requires(Items.ACACIA_LOG).requires(SOURCE_GEM_BLOCK).save(consumer);

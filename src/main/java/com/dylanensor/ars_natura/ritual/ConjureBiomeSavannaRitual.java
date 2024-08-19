@@ -81,6 +81,13 @@ public class ConjureBiomeSavannaRitual extends ConjureBiomeRitual {
     public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.SAVANNA); }
 
     @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isPlateau", isPlateau);
+        tag.putBoolean("isWindswept", isWindswept);
+    }
+
+    @Override
     public void read(CompoundTag tag) {
         super.read(tag);
         checkForBiomeModifier();
@@ -93,12 +100,11 @@ public class ConjureBiomeSavannaRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.SAVANNA;
         if (isPlateau) {
             this.biome = Biomes.SAVANNA_PLATEAU;
         } else if (isWindswept) {
             this.biome = Biomes.WINDSWEPT_SAVANNA;
-        } else {
-            this.biome = Biomes.SAVANNA;
         }
         return this.biome;
     }

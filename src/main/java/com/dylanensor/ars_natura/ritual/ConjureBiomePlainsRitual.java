@@ -80,7 +80,15 @@ public class ConjureBiomePlainsRitual extends ConjureBiomeRitual {
     }
 
     @Override
-    public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.NEW_PLAINS); }
+    public ResourceLocation getRegistryName() { return new ResourceLocation(ArsNatura.MODID, RitualLib.PLAINS); }
+
+    @Override
+    public void write(CompoundTag tag) {
+        super.write(tag);
+        tag.putBoolean("isSunflower", isSunflower);
+        tag.putBoolean("isSnowy", isSnowy);
+        tag.putBoolean("isIce", isIce);
+    }
 
     @Override
     public void read(CompoundTag tag) {
@@ -96,14 +104,13 @@ public class ConjureBiomePlainsRitual extends ConjureBiomeRitual {
     }
 
     private ResourceKey<Biome> setBiome() {
+        this.biome = Biomes.PLAINS;
         if (isSunflower) {
             this.biome = Biomes.SUNFLOWER_PLAINS;
         } else if (isSnowy) {
             this.biome = Biomes.SNOWY_PLAINS;
         } else if (isIce) {
             this.biome = Biomes.ICE_SPIKES;
-        } else {
-            this.biome = Biomes.PLAINS;
         }
         return this.biome;
     }
